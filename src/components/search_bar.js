@@ -9,14 +9,21 @@ class SearchBar extends Component {// inherit from React.Component class
   }
   render() { // every Component must have a Render Method
     return (
-    <div>
+    <div className="search-bar">
       <input
         value = {this.state.term}
-        onChange={(event) => this.setState({term: event.target.value})}/>
+        onChange={event => this.onInputChange(event.target.value)}/>
     </div>
   );
   }
+  onInputChange(term){
+    this.setState({term});
+    this.props.onSearchTermChange(term);
+  }
+
 }
+
+
 export default SearchBar;
 
 
